@@ -45,15 +45,15 @@ myContract.deploy({
     .on('receipt', function(receipt){
         console.log(receipt.contractAddress) // contains the new contract address
     })
-    .then(function(newContractInstance){
+    .then(async function(newContractInstance){
         console.log(newContractInstance.options.address) // instance with the new contract address
         newContractInstance.methods.name().call
             .then(function (r) {
                console.log(r);
             });
 
-
-        let name = await (newContractInstance.methods.name().call());
+        //输出合约的名字  等等四个属性的输出
+        let name = await newContractInstance.methods.name().call();
         console.log(name);
     });
 
